@@ -16,10 +16,11 @@ const PostList = ({ updatePage, update, setUpdate, posts, setPosts }) => {
 
    const [ upvotes, setUpvotes ] = useState(0)
 
-   const deletePost = (id) => {
-       console.log(posts._id)
-       axios.get(`http://localhost:8000/api/posts/${ posts._id }`, posts._id)
-       .then(res => console.log(res))
+   const deletePost = (post) => {
+       const url = `http://localhost:8000/api/posts/${ posts._id }`
+       console.log(url)
+    //    axios.get(``, posts._id)
+    //    .then(res => console.log(res))
     //    .catch(err => console.error(err))
    } 
 
@@ -42,18 +43,20 @@ const PostList = ({ updatePage, update, setUpdate, posts, setPosts }) => {
     return(
 
         <div className='postcard'>
-            { posts.map((post, id) => {
+            { posts.map((post, index) => {
                 return(
-                    <div key={ id }>
+                    <div>
                         <Post
-                            key={ post._id}
+                            key={ post._id }
+                            id={ post._id }
                             post={ post }
                             posts={ posts } 
                             upvotes={ upvotes }
                             setUpvotes={ setUpvotes }
                             deletePost={ deletePost }
                             update={ update }
-                            setUpdate={ setUpdate }/>
+                            setUpdate={ setUpdate }
+                            index={ index }/>
                     </div>
                 )
             })}

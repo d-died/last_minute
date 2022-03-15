@@ -7,7 +7,7 @@ import {
     Button,
 } from 'reactstrap'
 
-const Post = ({ key, post, posts, upvotes, setUpvotes, deletePost, update, setUpdate }) => {
+const Post = ({ id, post, posts, upvotes, setUpvotes, deletePost, update, setUpdate }) => {
 
     return(
         <div>
@@ -29,7 +29,7 @@ const Post = ({ key, post, posts, upvotes, setUpvotes, deletePost, update, setUp
                 <CardText>
                 { post.description }
                 </CardText>
-                <Button onClick={ () => { deletePost() } }>
+                <Button onClick={ () => { deletePost(post) } }>
                     Delete
                 </Button>
                 
