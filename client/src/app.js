@@ -22,7 +22,7 @@ const App = () => {
 
     }
 
-    const updatePage = () => { setUpdate(!update)}
+    const updatePage = () => { setUpdate(!update) }
 
     console.log(posts)
 
@@ -39,7 +39,8 @@ const App = () => {
                 setPosts={ setPosts }
                 updatePage={ updatePage }
                 update={ update }
-                setUpdate={ setUpdate }/>
+                setUpdate={ setUpdate }
+            />
         </div>
 
     )

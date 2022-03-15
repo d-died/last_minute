@@ -9,18 +9,30 @@ import {
 } from 'reactstrap'
 
 
-const PostList = ({ posts, setPosts }) => {
+const PostList = ({ updatePage, update, setUpdate, posts, setPosts }) => {
 
    console.log(posts)
 
-//    const vote = ( e, index ) => {
-//     //    let cheer = upvote
-//     //    console.log(e.target._id)
-//     //    console.log(id)
-//        if (index === posts._id){
-//          posts.upvotes += 1
-//          console.log(posts)
-//        }
+   const [ upvotes, setUpvotes ] = useState(0)
+
+   const deletePost = (id) => {
+    //    console.log(posts._id)
+       axios.get(`http://localhost:8000/api/posts/${ posts._id }`, posts._id)
+       .then(res => console.log(res))
+    //    .catch(err => console.error(err))
+   } 
+
+
+//    const vote = ( postID ) => {
+    
+//     posts.forEach((post) => {
+//         if(post._id === postID){
+//             setUpvotes( upvotes + 1 )
+//             console.log(upvotes)
+//             // axios
+//             //     .post('http://localhost:8000/api/posts', { upvotes: upvotes })
+//         }
+//     })
        
 //     //    axios
 //     //     .post(`http://localhost:8000/posts/${ id }`)
@@ -50,7 +62,7 @@ const PostList = ({ posts, setPosts }) => {
                         <CardText>
                         { post.description }
                         </CardText>
-                        <Button>
+                        <Button onClick={ () => { deletePost() } }>
                             Delete
                         </Button>
                         

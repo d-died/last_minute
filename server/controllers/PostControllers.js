@@ -17,7 +17,17 @@ router.get('/', async (req, res, next ) => {
 
 // GET POSTS BY ID
 
-
+router.get('/:id', async (req, res, next) => {
+    console.log(req)
+    try{
+        const singlePost = await Post.findById(req.params.id)
+        if (singlePost) {
+            res.json(singlePost)
+        }
+    } catch(err) {
+        next(err)
+    }
+})
 
 
 // CREATE NEW POST
