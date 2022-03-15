@@ -7,6 +7,7 @@ import {
     CardText,
     Button,
 } from 'reactstrap'
+import Post from './Post'
 
 
 const PostList = ({ updatePage, update, setUpdate, posts, setPosts }) => {
@@ -16,7 +17,7 @@ const PostList = ({ updatePage, update, setUpdate, posts, setPosts }) => {
    const [ upvotes, setUpvotes ] = useState(0)
 
    const deletePost = (id) => {
-    //    console.log(posts._id)
+       console.log(posts._id)
        axios.get(`http://localhost:8000/api/posts/${ posts._id }`, posts._id)
        .then(res => console.log(res))
     //    .catch(err => console.error(err))
@@ -44,29 +45,15 @@ const PostList = ({ updatePage, update, setUpdate, posts, setPosts }) => {
             { posts.map((post, id) => {
                 return(
                     <div key={ id }>
-                    <Card
-                        body
-                        color="success"
-                        inverse
-                    >
-                        <CardTitle tag="h5">
-                        { post.title }
-                        </CardTitle>
-                        <CardSubtitle>
-                            {/* { upvote } upvotes  */}
-                        { post.upvotes } Upvotes
-                        <Button>
-                            Upvote
-                        </Button>
-                        </CardSubtitle>
-                        <CardText>
-                        { post.description }
-                        </CardText>
-                        <Button onClick={ () => { deletePost() } }>
-                            Delete
-                        </Button>
-                        
-                    </Card>
+                        <Post
+                            key={ post._id}
+                            post={ post }
+                            posts={ posts } 
+                            upvotes={ upvotes }
+                            setUpvotes={ setUpvotes }
+                            deletePost={ deletePost }
+                            update={ update }
+                            setUpdate={ setUpdate }/>
                     </div>
                 )
             })}
