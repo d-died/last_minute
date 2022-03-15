@@ -13,13 +13,10 @@ import axios from 'axios'
 
 
 
-const PostForm = () => {
+const PostForm = ({ update, setUpdate, posts, setPosts}) => {
 
     const [ formState, setFormState ] = useState({ title: '', description: '', upvotes: 0})
-
-    const [ pageUpdate, setPageUpdate ] = useState(false)
-
-    const updatePage = () => {setPageUpdate(!pageUpdate)}
+    const [ added, setAdded ] = useState(false)
 
     // useEffect(() => {
 
@@ -37,13 +34,16 @@ const PostForm = () => {
     const handleSubmit = e => {
         e.preventDefault()
         console.log(formState)
+        console.log(posts)
         const { name, value } = e.target
-        setFormState(prevState => ({
-            ...prevState, [name]: value
+        setPosts(posts => ({
+            ...posts, formState
         }))
+        setUpdate(!update)
 
         axios
             .post('http://localhost:8000/api/posts', formState)
+            .then(() => {setAdded(!added)})
             .catch(err => console.error(err))
     }
 

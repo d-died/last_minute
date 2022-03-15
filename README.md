@@ -16,7 +16,7 @@ wilt is (going to be) a subreddit-style forum where users can read and submit po
 ![ComponentTree](image-1.png 'Components')
 ![UI](image-2.png 'UI')
 
-## User Stories:
+## User Stories (of ideas past):
 - As a user, I can create an account with login credentials. 
 - As a user, I can read other people's posts. 
 - As a user, I can see some visuals (graphs, etc.) based on data from the posts. 
@@ -25,7 +25,7 @@ wilt is (going to be) a subreddit-style forum where users can read and submit po
 - As a user with credentials, I can view, create, update, and delete my own posts. 
 
 
-## Strech Goal User Stories
+## Strech Goal User Stories (to be continued):
 - As a user, I can view all posts sorted in different ways.
 - As a user, I can comment on other people's posts. 
 - As a user, I can respond to people's posts with different reactions. 

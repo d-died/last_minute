@@ -13,7 +13,7 @@ const App = () => {
 
     useEffect(() => {
         getPosts()
-    }, [])
+    }, [update])
 
     const getPosts = () => {
         axios.get('http://localhost:8000/api/posts')
@@ -22,6 +22,8 @@ const App = () => {
 
     }
 
+    
+
     const updatePage = () => { setUpdate(!update) }
 
     console.log(posts)
@@ -29,7 +31,9 @@ const App = () => {
     return(
         <div>
             <Header />
-            <PostForm 
+            <PostForm
+                posts={ posts }
+                setPosts={ setPosts } 
                 updatePage={ updatePage }
                 update={ update }
                 setUpdate={ setUpdate }
@@ -40,6 +44,8 @@ const App = () => {
                 updatePage={ updatePage }
                 update={ update }
                 setUpdate={ setUpdate }
+                upvotes={ upvotes }
+                setUpvotes={ setUpvotes }
             />
         </div>
 

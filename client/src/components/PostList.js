@@ -8,21 +8,44 @@ import {
     Button,
 } from 'reactstrap'
 import Post from './Post'
+import Upvotes from '../components/Upvotes'
 
 
-const PostList = ({ updatePage, update, setUpdate, posts, setPosts }) => {
+const PostList = ({ updatePage, update, upvotes, setUpvotes, setUpdate, posts, setPosts }) => {
 
    console.log(posts)
 
-   const [ upvotes, setUpvotes ] = useState(0)
 
    const deletePost = (post) => {
-       const url = `http://localhost:8000/api/posts/${ posts._id }`
+       const url = `http://localhost:8000/api/posts/${ post._id }`
        console.log(url)
-    //    axios.get(``, posts._id)
-    //    .then(res => console.log(res))
-    //    .catch(err => console.error(err))
+       axios.delete(url)
+       .then(() => setUpdate(!update))
+       .catch(err => console.error(err))
+
    } 
+
+   const increment = () => {
+       setUpvotes(upvotes += 1)
+   }
+
+   const upvote = (post) => {
+    const url = `http://localhost:8000/api/posts/${ post._id }`
+    posts.forEach( item => {
+        if (item._id === post._id) {
+            const vote = item.upvotes += 1
+            console.log(vote)
+            axios.put(url, { upvotes: vote })
+                .then(() => setUpdate(!update))
+                .catch(err => console.error(err))
+        }
+    })
+    
+    // console.log(posts)
+    // console.log(post._id)
+    // console.log(upvotes)
+    
+}
 
 
 //    const vote = ( postID ) => {
@@ -50,13 +73,18 @@ const PostList = ({ updatePage, update, setUpdate, posts, setPosts }) => {
                             key={ post._id }
                             id={ post._id }
                             post={ post }
-                            posts={ posts } 
+                            upvote={ upvote }
                             upvotes={ upvotes }
                             setUpvotes={ setUpvotes }
                             deletePost={ deletePost }
                             update={ update }
                             setUpdate={ setUpdate }
                             index={ index }/>
+                        {/* <Upvotes 
+                            // upvote={ upvote }
+                            setUpdate={ setUpdate }
+                            update={ update }
+                            upvotes={ upvotes }/> */}
                     </div>
                 )
             })}

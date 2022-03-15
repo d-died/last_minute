@@ -7,7 +7,7 @@ import {
     Button,
 } from 'reactstrap'
 
-const Post = ({ id, post, posts, upvotes, setUpvotes, deletePost, update, setUpdate }) => {
+const Post = ({ id, post, posts, upvote, upvotes, setUpvotes, deletePost, update, setUpdate }) => {
 
     return(
         <div>
@@ -22,7 +22,7 @@ const Post = ({ id, post, posts, upvotes, setUpvotes, deletePost, update, setUpd
                 <CardSubtitle>
                     {/* { upvote } upvotes  */}
                 { post.upvotes } Upvotes
-                <Button>
+                <Button onClick={ () => { upvote(post) }}>
                     Upvote
                 </Button>
                 </CardSubtitle>

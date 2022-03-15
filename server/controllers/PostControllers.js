@@ -43,10 +43,32 @@ router.post('/', async (req, res, next) => {
 
 // DELETE POST
 
-
+router.delete('/:id', async( req, res, next ) => {
+    try{
+        const deletePost = await Post.findByIdAndDelete(req.params.id)
+        if (deletePost) {
+            res.sendStatus(204)
+        } else {
+            res.sendStatus(404)
+        }
+    } catch(err) {
+        next(err)
+    }
+})
 
 //UPDATE POST 
-
+router.put('/:id', async ( req, res, next ) => {
+    try{
+        const upvoteUpdate = await Post.findByIdAndUpdate(req.params.id, req.body, {new:true})
+        if(upvoteUpdate) {
+            res.json(upvoteUpdate)
+        } else {
+            res.sendStatus(404)
+        }
+    } catch(err) {
+        next(err)
+    }
+})
 
 
 
