@@ -17,6 +17,11 @@ router.get('/', async (req, res, next ) => {
 
 // GET POSTS BY ID
 
+
+
+
+// CREATE NEW POST
+
 router.post('/', async (req, res, next) => {
     try{
         const newPost = await Post.create(req.body)
@@ -26,14 +31,13 @@ router.post('/', async (req, res, next) => {
     }
 })
 
-
-
-// CREATE NEW POST
-
-
-
 // DELETE POST
 
 
 
 //UPDATE POST 
+
+
+
+
+module.exports = router

@@ -3,11 +3,11 @@ const db = mongoose.connection
 require('dotenv').config()
 
 
-mongoose.connect(mongoURI, { useNewUrlParser: true })
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
 
 // Connection error/success
 db.on("error", (err) => console.log(err.message + " is Mongod not running?"));
-db.on("connected", () => console.log("mongo connected at: ", mongoURI));
+db.on("connected", () => console.log("mongo connected at: 8000"));
 db.on("disconnected", () => console.log("mongo disconnected"));
 
 // Open the Connection

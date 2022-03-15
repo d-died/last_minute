@@ -1,7 +1,9 @@
 const express = require('express')
 const app = express()
-const db = require('./db/connection')
+// const db = require('./db/connection')
 app.set('port', 8000)
+const cors = require('cors')
+app.use(cors())
 
 
 
@@ -25,12 +27,16 @@ app.get('/', (req, res) => {
     res.redirect('/api/posts')
 })
 
+app.get('/api', (req,res) => {
+    res.json({ message: 'Hi from server!'})
+})
 
 ////////////////////////
 //CONTROLLERS
 ////////////////////////
 
-
+const postController = require('./controllers/PostControllers')
+app.use('/api/posts', postController)
 
 ////////////////////////
 //START SERVER
