@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { 
     Form,
@@ -18,12 +18,6 @@ const PostForm = ({ update, setUpdate, posts, setPosts}) => {
     const [ formState, setFormState ] = useState({ title: '', description: '', upvotes: 0})
     const [ added, setAdded ] = useState(false)
 
-    // useEffect(() => {
-
-    //     updatePage()
-
-    // }, [pageUpdate])
-
     const handleChange = e => {
         const { name, value } = e.target
         setFormState(prevState => ({
@@ -35,7 +29,6 @@ const PostForm = ({ update, setUpdate, posts, setPosts}) => {
         e.preventDefault()
         console.log(formState)
         console.log(posts)
-        const { name, value } = e.target
         setPosts(posts => ({
             ...posts, formState
         }))

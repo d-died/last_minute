@@ -7,11 +7,11 @@ import {
     Button,
 } from 'reactstrap'
 
-const Post = ({ id, post, posts, upvote, upvotes, setUpvotes, deletePost, update, setUpdate }) => {
+const Post = ({ post, upvote, deletePost }) => {
 
     return(
         <div>
-             <Card
+            <Card
                 body
                 color="success"
                 inverse
@@ -20,7 +20,6 @@ const Post = ({ id, post, posts, upvote, upvotes, setUpvotes, deletePost, update
                 { post.title }
                 </CardTitle>
                 <CardSubtitle>
-                    {/* { upvote } upvotes  */}
                 { post.upvotes } Upvotes
                 <Button onClick={ () => { upvote(post) }}>
                     Upvote
@@ -33,7 +32,7 @@ const Post = ({ id, post, posts, upvote, upvotes, setUpvotes, deletePost, update
                     Delete
                 </Button>
                 
-            </Card>
+            </Card>             
         </div>
     )
 }

@@ -17,40 +17,30 @@ const App = () => {
 
     const getPosts = () => {
         axios.get('http://localhost:8000/api/posts')
-        // .then( res => console.log(res, res.data) )
         .then(res => setPosts(res.data))
 
     }
 
-    
-
-    const updatePage = () => { setUpdate(!update) }
-
-    console.log(posts)
 
     return(
         <div>
             <Header />
+            <a href='/graphs'> Graphs </a>
             <PostForm
                 posts={ posts }
                 setPosts={ setPosts } 
-                updatePage={ updatePage }
                 update={ update }
                 setUpdate={ setUpdate }
             />
             <PostList 
                 posts={ posts }
-                setPosts={ setPosts }
-                updatePage={ updatePage }
                 update={ update }
                 setUpdate={ setUpdate }
                 upvotes={ upvotes }
                 setUpvotes={ setUpvotes }
             />
         </div>
-
     )
-
     }
 
 

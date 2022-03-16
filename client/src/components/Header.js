@@ -10,6 +10,7 @@ import {
     Collapse
 } from 'reactstrap'
 
+
 const Header = () => {
 
     const [ hamMenu, setHamMenu ] = useState(false)
@@ -42,8 +43,8 @@ const Header = () => {
                     <Collapse open={ hamMenu } navbar>
                     <Nav navbar>
                         <NavItem>
-                        <NavLink href="/components/">
-                            Components
+                        <NavLink href='/graphs'>
+                            Graphs
                         </NavLink>
                         </NavItem>
                         <NavItem>
